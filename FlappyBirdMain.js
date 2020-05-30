@@ -261,13 +261,14 @@ function main() {
 
             if(gameState.current == gameState.game){
                 ctx.lineWidth = 2;
-                ctx.font = "35px Teko";
+                ctx.font = "35px Georgia";
+                ctx.fillStyle = "blue";
                 ctx.fillText(this.currentScore, cvs.width/2, 50);
                 ctx.strokeText(this.currentScore, cvs.width/2, 50);
 
             }else if(gameState.current == gameState.over){
                 // currentScore
-                ctx.font = "25px Teko";
+                ctx.font = "25px Comic Sans MS";
                 ctx.fillText(this.currentScore, 225, 186);
                 ctx.strokeText(this.currentScore, 225, 186);
                 // bestScore
