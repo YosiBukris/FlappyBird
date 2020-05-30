@@ -35,6 +35,7 @@ function main() {
             ctx.drawImage(myBack, this.sourceX, this.sourceY, this.w, this.h, this.destX, this.destY, this.w, this.h);
         }
     }
+
     const foreGround = {sourceX: 276, sourceY: 0, w: 224, h: 112, destX: 0, destY: cvs.height - 112, gapX : 3, //movement of foreground
         draw : function(){
             ctx.drawImage(sprite, this.sourceX, this.sourceY, this.w, this.h, this.destX, this.destY, this.w, this.h);
@@ -46,6 +47,7 @@ function main() {
             }
         }
     }
+
     const bird = {
         animation : [
             {sourceX: 0, sourceY : 0},
@@ -115,6 +117,7 @@ function main() {
             this.movement = 0;
         }
     }
+
     const pipes = {
         position : [],
         top : {
@@ -189,6 +192,7 @@ function main() {
             this.position = [];
         }
     }
+
     const coins = {
         position : [],
         sourceX : 0,
@@ -246,6 +250,7 @@ function main() {
             this.position = [];
         }
     }
+
     const score= {
         bestScore : parseInt(localStorage.getItem("bestScore")) || 0,
         currentScore : 0,
@@ -275,6 +280,7 @@ function main() {
             this.currentScore = 0;
         }
     }
+
     const getReady = {
         sourceX : 0,
         sourceY : 228,
@@ -290,6 +296,7 @@ function main() {
         }
 
     } //getReady lable
+
     const gameOver = {
         sourceX : 175,
         sourceY : 228,
@@ -331,12 +338,14 @@ function main() {
             }
         });
     } //on mouseClicked
+
     function loadImages() {
         sprite.src = "img/sprite.png";
         myBack.src = "img/myBackground.png";
         myBird.src = "img/myBird.png";
         myCoins.src = "img/money.png";
     }
+
     function loadSounds() {
         scoreSound.src = "audio/pointSound.wav";
         FLAP.src = "audio/flipSound.wav";
@@ -351,6 +360,7 @@ function main() {
         gameListener();
         loop();
     }
+
     function draw(){
         ctx.fillStyle = "#70c5ce";
         ctx.fillRect(0, 0, cvs.width, cvs.height);
@@ -363,18 +373,21 @@ function main() {
         gameOver.draw();
         score.draw();
     } //drawing the game screen
+
     function update(){
         bird.update();
         foreGround.update();
         coins.update();
         pipes.update();
     } //update the game
+
     function loop(){
         update();
         draw();
         frames++;
         requestAnimationFrame(loop);
     }
+
     function restart(){
         pipes.reset();
         coins.reset();
@@ -382,7 +395,6 @@ function main() {
         score.reset();
         gameState.current = gameState.getReady;
     } //when restart is clicked
-
 // Start
     init();
 }
